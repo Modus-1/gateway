@@ -14,8 +14,9 @@ const path = require('path');
  * Developer mode switch.
  * 
  * When enabled, the result is proxied.
+ * It can be toggled from the command line with option --dev.
  */
-let DEV_MODE = false;
+let DEV_MODE = process.argv.includes("--dev");
 
 if(DEV_MODE) {
     // For development, we proxy the react dev server
@@ -38,10 +39,8 @@ if(DEV_MODE) {
  */
 async function main() {
     // Check if development mode is enabled
-    if(process.argv.includes("--dev")) {
+    if(process.argv.includes("--dev"))
         logInfo("Development mode enabled! ** This option is discouraged for production use **");
-        DEV_MODE = true;
-    }
 
     // Check if frontend has been built
     if((!await existsAsync(config.frontend.path) || !(await fs.promises.stat(config.frontend.path)).isDirectory())) {
