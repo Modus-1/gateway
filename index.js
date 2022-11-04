@@ -15,7 +15,6 @@ const app = express();
 const server = http.createServer(app);
 const config = require('./data/config.json');
 const { loadAllRoutes } = require('./lib/router/routeloader');
-const { constructResponseObject, sendResponseObject } = require('./lib/util/api');
 
 // Import cookie parser
 app.use(cookieParser("secret"));
