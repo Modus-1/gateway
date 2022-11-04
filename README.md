@@ -1,3 +1,5 @@
+![MODUS](https://img.shields.io/badge/MODUS-ASSUMPTION-orange?style=for-the-badge)
+![Modus Logo](docs/Modus.png)
 # Modus gateway service
 
 This is a gateway service.
