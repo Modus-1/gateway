@@ -1,0 +1,3 @@
+[submodule "extern/customer-frontend"]
+	path = extern/customer-frontend
+	url = https://github.com/Modus-1/customer-frontend.git

@@ -7,6 +7,8 @@ const app = express();
 const config = require('./data/config.json');
 const { logInfo } = require('./lib/logger');
 
+
+
 /**
  * Gateway entry point.
  */
