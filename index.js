@@ -26,7 +26,7 @@ app.use(bodyParser.json());
  */
 const appContext = {
     app,
-    wsEventQueue: require('./lib/event/wsequeue'),
+    wsEventQueue: require('./lib/wsevent/wsserver'),
     sessionMgr: require('./lib/session/sessmgr')
 }
 
@@ -82,8 +82,9 @@ async function main() {
         process.exit(1);
     }
 
-    // Bind event queue
+    // Bind event queue and init it
     appContext.wsEventQueue.bind(server);
+    appContext.wsEventQueue.init(appContext);
 
     // Start the server
     server.listen(config.http.port, ()=> {
