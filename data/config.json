@@ -7,7 +7,17 @@
         "devServer": "http://localhost:3000"
     },
     "session": {
-        "maxAge": 3.6e+6
+        "maxAge": 3.6e+6,
+        "accessControl": [
+            {
+                "path": "/Kitchen*",
+                "levelNeeded": 1
+            },
+            {
+                "path": "/Admin*",
+                "levelNeeded": 2
+            }
+        ]
     },
     "services": [
         { "name": "menu-api", "host": "https://localhost:7286/" }

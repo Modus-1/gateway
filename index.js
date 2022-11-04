@@ -15,6 +15,7 @@ const app = express();
 const server = http.createServer(app);
 const config = require('./data/config.json');
 const { loadAllRoutes } = require('./lib/router/routeloader');
+const { constructResponseObject, sendResponseObject } = require('./lib/util/api');
 
 // Import cookie parser
 app.use(cookieParser("secret"));
@@ -29,6 +30,9 @@ const appContext = {
     wsEventQueue: require('./lib/event/wsequeue'),
     sessionMgr: require('./lib/session/sessmgr')
 }
+
+// [ Top level middleware: session management ]
+require('./lib/middleware/access-control').init(appContext);
 
 // [ Load routes ]
 loadAllRoutes(appContext, [
