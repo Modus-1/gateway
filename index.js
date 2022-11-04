@@ -3,12 +3,16 @@
  */
 
 const express = require('express');
-const app = express();
-const config = require('./data/config.json');
-const { logInfo, logError } = require('./lib/logger');
 const fs = require('fs');
-const { existsAsync } = require('./lib/util');
 const path = require('path');
+const http = require('http');
+const { logInfo, logError } = require('./lib/logger');
+const { existsAsync } = require('./lib/util/misc');
+
+const app = express();
+const server = http.createServer(app);
+const config = require('./data/config.json');
+const wsEventQueue = require('./lib/event/wsequeue');
 
 /**
  * Developer mode switch.
@@ -48,7 +52,11 @@ async function main() {
         process.exit(1);
     }
 
-    app.listen(config.http.port, ()=> {
+    // Bind event queue
+    wsEventQueue.bind(server);
+
+    // Start the server
+    server.listen(config.http.port, ()=> {
         logInfo(`Gateway server is active @ port ${config.http.port}`);
     });
 }
