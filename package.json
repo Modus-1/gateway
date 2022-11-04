@@ -1,0 +1,24 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "Gateway server for Modus Assumption",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Modus-1/gateway.git"
+  },
+  "keywords": [],
+  "author": "Modus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Modus-1/gateway/issues"
+  },
+  "homepage": "https://github.com/Modus-1/gateway#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.5.3"
+  }
+}
