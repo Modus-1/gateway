@@ -6,6 +6,10 @@ This is a gateway service.
 
 Run `npm install` to install dependencies.
 
+## Running (dev)
+
+Run `npm run start-dev` to start this service in development mode.
+
 ## Running
 
-Run `node index.js` to start this service.
+Run `npm run start` to start this service.

@@ -3,6 +3,10 @@
         "port": 12345
     },
     "frontend": {
-        "path": "frontend/build"
-    }
+        "path": "frontend/build",
+        "devServer": "http://localhost:3000"
+    },
+    "services": [
+        { "name": "menu-api", "host": "https://localhost:7286/" }
+    ]
 }
