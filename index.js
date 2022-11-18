@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const { logInfo, logError } = require('./lib/logger');
 const { existsAsync } = require('./lib/util/misc');
 const bodyParser = require('body-parser');
+const proxy = require('express-http-proxy');
 
 const app = express();
 const server = http.createServer(app);
@@ -38,6 +39,9 @@ loadAllRoutes(appContext, [
     "routes/session"
 ]);
 
+// Menu API routes
+app.use("/api/menu", proxy(config.services.find(x => x.name == "menu-api").host));
+
 /**
  * Developer mode switch.
  * 
@@ -52,7 +56,6 @@ let DEV_MODE = process.argv.includes("--dev");
 if(DEV_MODE) {
     // For development, we proxy the react dev server
     // This is needed so we can retain live updates
-    const proxy = require('express-http-proxy');
     app.use("/", proxy(config.frontend.devServer));
 } else {
     // For production, we use the build
@@ -75,11 +78,12 @@ async function main() {
     // Check if development mode is enabled
     if(process.argv.includes("--dev"))
         logInfo("Development mode enabled! ** This option is discouraged for production use **");
-
-    // Check if frontend has been built
-    if((!await existsAsync(config.frontend.path) || !(await fs.promises.stat(config.frontend.path)).isDirectory())) {
-        logError("The frontend has not been built, please run `npm run build` in the frontend project.");
-        process.exit(1);
+    else {
+        // Check if frontend has been built
+        if((!await existsAsync(config.frontend.path) || !(await fs.promises.stat(config.frontend.path)).isDirectory())) {
+            logError("The frontend has not been built, please run `npm run build` in the frontend project.");
+            process.exit(1);
+        }
     }
 
     // Bind event queue and init it
