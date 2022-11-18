@@ -9,21 +9,9 @@
     "session": {
         "maxAge": 3.6e+6,
         "accessControl": [
-            {
-                "path": "/Kitchen*",
-                "methods": "*",
-                "levelNeeded": 1
-            },
-            {
-                "path": "/Admin*",
-                "methods": "*",
-                "levelNeeded": 2
-            },
-            {
-                "path": "/api/menu",
-                "methods": ["*", "!GET"],
-                "levelNeeded": 2
-            }
+            { "path": "/Kitchen*", "methods": "*", "levelNeeded": 1 },
+            { "path": "/Admin*", "methods": "*", "levelNeeded": 2 },
+            { "path": "/api/menu", "methods": ["*", "!GET"], "levelNeeded": 2 }
         ]
     },
     "services": [
