@@ -15,7 +15,7 @@
     ]
   },
   "services": [
-    { "name": "menu-api", "host": "http://localhost:5286/api" },
-    { "name": "order-api", "host": "http://localhost:5116/order" }
+    { "name": "menu-api", "host": "http://localhost:9000/api" },
+    { "name": "order-api", "host": "http://localhost:9002/order" }
   ]
 }
