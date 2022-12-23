@@ -14,5 +14,8 @@
       { "path": "/api/menu", "methods": ["*", "!GET"], "levelNeeded": 2 }
     ]
   },
-  "services": [{ "name": "menu-api", "host": "http://localhost:9000/api" }]
+  "services": [
+    { "name": "menu-api", "host": "http://localhost:9000/api" },
+    { "name": "order-api", "host": "http://localhost:9002/order" }
+  ]
 }
